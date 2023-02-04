@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./Login.css">
+</head>
+<body>
+    <form id="Login" onsubmit="userLogin(event)" action="/" method="POST">
+    <div class="container" id="absolute">
+        <div class="brand-logo"></div>
+        <div class="brand-title">GPCHAT</div>
+        <div class="inputs">
+            
+          <label>EMAIL</label>
+          <input type="email" placeholder="example@test.com" name="email" required/>
+          <label>PASSWORD</label>
+          <input type="password" placeholder="Min 6 charaters long" name="password" required />
+          <button type="submit">LOGIN</button>  
+        </div>
+        <div class="pageRefer">
+            <a href="./Register.html">Don't have an account? Click here</a>
+        </div>
+        <div class="ForgotPassWord">
+            <a href="./forgotPassWord.html">Forgot Password</a>
+        </div>
+        <div class =ProfRefer>
+            <a href="https://github.com/shashi-sharde/Project-Group-Chat">MADE BY SHASHI</a>
+
+        </div>
+        
+       
+      </div>
+    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"></script>
+    <script src="./Login.js"></script>
+</body>
+</html>

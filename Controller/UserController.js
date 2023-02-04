@@ -11,7 +11,7 @@ exports.registerUser = async(req,res,next)=>{
         }
         const userdata = await User.findAll({where:{Email}})
         if(userdata.length>0){
-            return res.status(401).json({message: "Email Id already Exists!"})
+            return res.status(207).json({message: "Email Id already Exists!"})
         }
         else{
             saltRound = 10;

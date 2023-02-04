@@ -13,8 +13,9 @@ function userRegister(event){
             alert("Registration for new user is successfull!")
             window.location.href='http://localhost:3000/Login.html'
         }
-        else if(response.status===401){
-            document.body.innerHTML +=`<div style= 'color:red'> ${'Email Id already Registerd, please try to login!'}</div> `
+        else if(response.status===207){
+           // document.body.innerHTML +=`<div style= 'color:red'> ${'Email Id already Registerd, please try to login!'}</div> `
+            alert('Email Id already Registerd, Please Login!')
         }
     }).catch(err =>{
         console.log(err)
