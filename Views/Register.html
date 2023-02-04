@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./register.css">
+</head>
+<body>
+    <form id="SignUp" onsubmit="userRegister(event)" action="/" method="POST">
+    <div class="container"  id="absolute">
+        <div class="brand-logo"></div>
+        <div class="brand-title">GPCHAT</div>
+        <div class="inputs">
+          <label>NAME</label>
+          <input type="text" placeholder="@Name" name="Name" />
+
+          <label>EMAIL</label>
+          <input type="email" placeholder="example@test.com" name="Email" />
+
+          <label>PHONE NUMBER</label>
+          <input type="text" placeholder="(eg XXXX-XXXX-XX)" name="PhoneNumber"/>
+
+          <label>PASSWORD</label>
+          <input type="password" placeholder="Min 4 charaters long"  name="Password"/>
+          <button type="submit">RGISTER</button>
+          
+        </div>
+        <div class="pageRefer">
+            <a href="./Login.html">Already Have an Account? Click here</a>
+        </div>
+        <div class =ProfRefer>
+            <a href="https://github.com/shashi-sharde/Project-Group-Chat">MADE BY SHASHI</a>
+
+        </div>
+        
+       
+      </div>
+    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"></script>
+    <script src="./Register.js">
+
+    </script>
+
+
+</body>
+</html>
