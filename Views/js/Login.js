@@ -8,10 +8,10 @@ function userLogin(event){
 
     axios.post('http://localhost:3000/users/Login',obj)
     .then((response)=>{
-        console.log("srfawnbrfjkbewajksfhrjkewsh",response);
+        
         if(response.status === 207){
             
-            document.body.innerHTML += `<h4  style="color:black; border: 3px solid white; width: 300px; margin:5px"><strong>Invalid Credetials : User Not Found!</strong> </h4>`;
+            document.body.innerHTML += `<h4  style="color:black; border: 3px solid white; width: 300px; margin:5px"><strong>Invalid Credetials : User Not Authorised!</strong> </h4>`;
         }
         if(response.status === 201){
             localStorage.setItem('token', response.data.token)

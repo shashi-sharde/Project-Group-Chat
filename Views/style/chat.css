@@ -11,8 +11,8 @@ body{
     background-image: linear-gradient(white,rgb(255, 255, 0));;
 }
 .container1{
-    max-width: 900px;
-    border: 2px solid black;
+    max-width: 720px;
+    border: 1px solid black;
     margin: auto;
     height: 60vh;
     border-radius: 6px;
@@ -23,9 +23,9 @@ body{
 }
 .message{
     background-color: rgb(180, 177, 177);
-    width: 26%;
+    width:fit-content;
     padding: 10px;
-    margin: 17px 12px;
+    margin: 10px 5px;
     border:2px solid black;
     border-radius: 15px;
 }
@@ -54,5 +54,5 @@ body{
     cursor: pointer;
     border: 2px solid black;
     border-radius: 6px;
-    height: 34px;
+    height: 37px;
 }

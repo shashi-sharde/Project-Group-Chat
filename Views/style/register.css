@@ -14,20 +14,14 @@ body {
   text-align: center;
   justify-content: center;
   place-items: center;
+  overflow: hidden;
   font-family: poppins;
-  overflow:hidden;
-  background:url("./g.jpg");
-  background-size:cover;
-  background-repeat: no-repeat;
-
-  background-attachment: fixed;
-  
 }
 
 .container {
-    margin-bottom: 70px;
-  width: 380px;
-  height: 500px;
+  margin-bottom: 10px;
+  width: 400px;
+  height: 600px;
   border-radius: 20px;
   padding: 40px;
   box-sizing: border-box;
@@ -39,12 +33,13 @@ body {
     background-color: rgba(255, 255, 0, 0.452);
     position: absolute;
     bottom: 10px;
-    right: 50px;
+    right: 40px;
   }
 .brand-logo {
   height: 100px;
   width: 100px;
-  background: url("https://olc-wordpress-assets.s3.amazonaws.com/uploads/2018/08/CONNECT.png");
+  background: url("https://img.icons8.com/glyph-neue/256/whatsapp.png");
+  background-size: 100px;
   margin: auto;
   border-radius: 50%;
   box-sizing: border-box;
@@ -52,16 +47,16 @@ body {
 }
 
 .brand-title {
-  margin-top: 5px;
+  margin-top: 10px;
   font-weight: 900;
   font-size: 1.8rem;
-  color: #1DA1F2;
+  color: black;
   letter-spacing: 1px;
 }
 
 .inputs {
   text-align: left;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 label, input, button {
@@ -74,13 +69,12 @@ label, input, button {
 }
 
 label {
-  margin-bottom: 4px;
-  font-size: 14px;
+  margin-bottom: 6px;
+  margin-top: 6px;
+  font-size:14px;
 }
 
-label:nth-of-type(2) {
-  margin-top: 12px;
-}
+
 
 input::placeholder {
   color: gray;
@@ -99,7 +93,7 @@ input {
 button {
   color: white;
   margin-top: 20px;
-  background: #1DA1F2;
+  background: #070707b4;;
   height: 40px;
   border-radius: 20px;
   cursor: pointer;
@@ -114,7 +108,7 @@ button:hover {
 
 .ProfRefer {
   position: absolute;
-  font-size: 12px;
+  font-size: 10px;
   bottom: 4px;
   right: 4px;
   text-decoration: none;
@@ -132,6 +126,11 @@ h1 {
 .pageRefer{
     margin-top: 10px;
 }
-.ForgotPassWord{
-    margin-top: 10px;
+body{
+    background:url("./Images/g.jpg");
+    background-size:cover;
+    background-repeat: no-repeat;
+   
+    background-attachment: fixed;
+
 }
