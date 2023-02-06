@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize')
 const sequelize = require('../util/Database') 
+const User = require('../Models/UserDetails')
 
 const Messages = sequelize.define('messages',{
     id:{
@@ -10,6 +11,10 @@ const Messages = sequelize.define('messages',{
     },
     message:{
         type:Sequelize.STRING,    
+    },
+    Name:{
+        type:Sequelize.STRING,
+        allowNull:false
     }
 })
 
