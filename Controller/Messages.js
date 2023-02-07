@@ -1,5 +1,6 @@
 const User = require('../Models/UserDetails')
 const Messages = require('../Models/Messeges')
+const { Op } = require("sequelize");
 
 exports.SendingUserMessage = async(req,res, next)=>{
 
@@ -18,22 +19,45 @@ exports.SendingUserMessage = async(req,res, next)=>{
         res.status(500).json({err:err})
     }
 }
-exports.GettingUserMessages = async(req, res, next)=>{
+// exports.GettingUserMessages = async(req, res, next)=>{
+//     try{
+//         //const username = req.user.Name
+        
+//         const data = await Messages.findAll();
+//         res.status(201).json(data)
+        
+//     }catch(err){
+//         console.log(err)
+//         res.status(500).json({err:err})
+//     }
+// }
+
+exports.GettingUserMessages = async(req,res,next)=>{
     try{
-        //const username = req.user.Name
-        
-        const data = await Messages.findAll({
-            include: [
-                {
-                    model: User,
-                    as: "userDetail"
+        const lastMessage = req.params.lastMessage
+        console.log("hsakjdfhgjkshdgajkfgjskghdfkjkhg", lastMessage)
+        console.log(req.params.lastMessage);
+        if(req.params.lastMessage == 0){
+            const messages = await Messages.findAll({
+                order: [[ 'createdAt', 'DESC' ]],
+                limit: 2
+            });
+            res.status(200).json(messages);
+        }
+        else{
+            const messages = await Messages.findAll({
+                where: {
+                    id: {
+                        [Op.gt]: req.params.lastMessage
+                    }
                 }
-            ]
-        });
-        res.status(201).json(data)
-        
-    }catch(err){
-        console.log(err)
-        res.status(500).json({err:err})
+            });
+            res.status(200).json(messages);
+        }
+    }
+    
+    catch(err){
+        console.error(err);
+
     }
 }
