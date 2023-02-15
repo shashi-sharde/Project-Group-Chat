@@ -5,36 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./style/Login.css">
+    <link rel="stylesheet" href="./public/login.css">
 </head>
-<body>
-    <form id="Login" onsubmit="userLogin(event)" action="/" method="POST">
-    <div class="container" id="absolute">
-        <div class="brand-logo"></div>
-        <div class="brand-title">CHATAPP</div>
-        <div class="inputs">
-            
-          <label>EMAIL</label>
-          <input type="email" placeholder="example@test.com" name="email" required/>
-          <label>PASSWORD</label>
-          <input type="password" placeholder="Min 6 charaters long" name="password" required />
-          <button type="submit">LOGIN</button>  
-        </div>
-        <div class="pageRefer">
-            <a href="./Register.html">Don't have an account? Click here</a>
-        </div>
-        <div class="ForgotPassWord">
-            <a href="./forgotPassWord.html">Forgot Password</a>
-        </div>
-        <div class =ProfRefer>
-            <a href="https://github.com/shashi-sharde/Project-Group-Chat">MADE BY SHASHI</a>
 
-        </div>
-        
-       
-      </div>
+    <div class="container">
+     <h2>LOGIN</h2>
+    <form class="submission-form" onsubmit="login(event)">
+        <input type="email" name="email" placeholder="ENTER YOUR EMAILID"required /><br>
+        <input type="password" name="password" placeholder="ENTER YOUR PASSWORD" required /><br>
+        <br>
+        <button class="btn1">Login</button><br>
+        <a style="color: #2fb185;" href="./SignUp.html"> NEW USER >>>> SIGN UP</a><br><br>
     </form>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"></script>
-    <script src="./js/Login.js"></script>
+
+</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js" integrity="sha512-QTnb9BQkG4fBYIt9JGvYmxPpd6TBeKp6lsUrtiVQsrJ9sb33Bn9s0wMQO9qVBFbPX3xHRAsBHvXlcsrnJjExjg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./js/login.js"></script>
 </body>
 </html>

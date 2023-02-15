@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./public/groupForm.css">
+    <title>Document</title>
+   
+</head>
+<body>
+ 
+    <div class="container">
+        <header class="chat-header">
+            <h1><i class="fas fa-smile"></i> ChatApp</h1>
+            <h2>Group Settings</h2>
+            <a id="leave-btn" class="btn2">Logout</a>
+          </header>
+        <div class="container1">
+            <div class="container3">
+                <div class="features">
+                    <nav>
+                        <button class="btn" id="one-to-one-chat"><b>Private Chat</b></button>
+                        <button class="btn" id="group-chat"><b>Group Chat</b></button>
+                        <button class="btn" id="create-group"><b>Group settings</b></button>
+                </nav>
+                <div id="list-of-all-groups" >
+                    <h4 style="padding: 10px; border: 1px solid white; border: radius 6px; color: aqua; text-align: center;">list of all groups</h4>
+                    <ul  id="created-group-show">
+        
+        
+                    </ul>
+               
+                
+                    <ul id="users-list">
+        
+                    </ul>
+                </div>
+            </div>
+        </div>
+            <div class="container4">
+                <div id="list-contcts">
+                    <h4 style="padding: 10px; width: 100%;  border: 1px solid white;  color: aqua; text-align: center;">list of all Users</h4>
+                    <ul id="list-of-all-contacts">
+        
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container2">
+            <div>
+                <form id="create-container" onsubmit="createGroup(event)">
+                    <h3><u>CREATE NEW GROUP</u></h3>
+                    <input type="text" class="entry" name="creategroup" id="create-group-name-user" placeholder="Enter group name"><br>
+                    <button class="btn4" type="submit" >Create</button>
+               </form>
+               <form id="create-group-user" onsubmit="addUserToGroup(event)">
+                <h3><u>ADD NEW USER</u></h3>
+                <div>
+                    <input type="text" class="entry"  name="grpname" placeholder="Enter group name" />
+                    <input type="email" class="entry"  name="email" placeholder="Email In contact">
+                    <div>
+                        <input type="radio" id="admin-yes" name="admin" />
+                        <label for="admin-yes"><i style="color: aqua;">Admin</i></label>
+                    </div>
+                    <div>
+                        <input type="radio" id="admin-no" name="admin" checked />
+                        <label for="admin-no"><i style="color: aqua;">Not Admin</i></label>
+                    </div>
+                </div>
+               
+                <button class="btn4"type="submit">Add</button>
+            </form>
+            <form id="remover-user" onsubmit="removeUser(event)">
+                <h3><u>REMOVE USER</u></h3>
+                <div>
+                    <input type="text" class="entry"  id="remove-group-user" name="removeName" placeholder="Enter group name" />
+                    <input type="email" class="entry"  id="remove-email" name="removeEmail" placeholder="Email In group" />
+                </div>
+                <button class="btn4" type="submit">Remove</button>
+            </form>
+            </div>
+        </div>
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js" integrity="sha512-QTnb9BQkG4fBYIt9JGvYmxPpd6TBeKp6lsUrtiVQsrJ9sb33Bn9s0wMQO9qVBFbPX3xHRAsBHvXlcsrnJjExjg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./js/groupForm.js">
+       
+    </script>
+</body>
+</html>

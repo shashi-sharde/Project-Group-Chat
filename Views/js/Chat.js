@@ -1,109 +1,146 @@
-function sendMessage(event){
-    event.preventDefault(event);
-    const message = event.target.messageInp.value
+const userLeft = document.getElementById('left')
+const userRight = document.getElementById('right')
+const messageHeader=document.getElementById('message-card-header')
+const chatMessage=document.getElementById('chat-messages')
+const toast=document.getElementById('toast-msg')
+const groupChat=document.getElementById('group-chat')
+const creategroup=document.getElementById('create-group')
 
-    const obj = { message}
-    const token = localStorage.getItem('token')
-    axios.post('http://localhost:3000/users/Sentmessage',obj,{ headers: {"Authorization" : token}}).then(response=>{
-       
-    //displayMessageOnScreen(response.data.message)
-    }).catch(err=>{
-        console.log({err:err})
-    })    
+groupChat.addEventListener('click',groupTalk)
+function groupTalk(){
+
+    window.location.href="./groupChat.html"
 }
-// async function getChats (event){
-//     const token = localStorage.getItem('token')
-//     try{
-//         await axios.get('http://localhost:3000/users/getmessage', {headers: {"Authorization" : token}})
-//         .then((response)=>{
-//             console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",response.data)
-//             document.querySelector('.container1').innerHTML=""
-//             displayMessageOnScreen(response.data)
-            
-//         })
-        
-//     }catch(err){
-//         console.log(err)
-//     }
-    
-// }
 
-// let interValid = setInterval(getChats(), 1000)
-// if(interValid){
-//     clearInterval(interValid)
-// }
-// window.addEventListener('DOMContentLoaded', getChats())
+creategroup.addEventListener('click',Crategroup)
+function Crategroup(){
+    window.location.href="./groupForm.html"
+}
 
 
 
 
-    
 
-    const messageArray = [];
-
-    window.addEventListener('DOMContentLoaded',async(event)=>{
-        const messageArray = await getLocalStorageMessages();
-        updatedMessages()
-        // setInterval(() => {
-        //     updatedMessages();
-        //  }, 1000)
-        
-        
+let toUserId;
+function createToast(msg, color = "red"){
+    console.log('true')
+    const div = document.createElement("div");
+    div.innerHTML = msg;
+    div.style.backgroundColor = '#5A5A5A';
+    div.style.padding = "1rem 2rem";
+    div.style.borderRadius = "4px";
+    div.style.color = "#fff";
+    console.log(div.innerText)
+    toast.append(div)
+    console.log(toast)
+    setTimeout(() => {
+      div.remove();
+    }, 2000);
+  }
+async function allLoginUsers(){
+    const token=localStorage.getItem('token')
+    userLeft.innerHTML=""
+   await axios.get('http://localhost:3000/chat/allusers',{headers:{"Authorization":token}})
+   .then(response=>{
+    // console.log(response)
+    // console.log(response.data.user)
+    const user1=response.data.user
+    user1.forEach((user)=>{
+        const childNodes=`<li class="list-group-item" >${user.name}<input type="hidden" class="user-id" value=${user.id} /></li>`
+        userLeft.innerHTML +=childNodes
     })
-    //window.addEventListener('DOMContentLoaded',updatedMessages())
+   })
+   
+}
+const fileInput = document.querySelector('#sendAttachment');
+fileInput.addEventListener('change', async () => {
+    const userId = +document.querySelector('.list-group-item').value;
+    const selectedFile = fileInput.files[0];
+    console.log(selectedFile);
+    await axios.post('/message/saveFile', {
+        file: selectedFile,
+        userId: userId
+    })
+})
 
-    async function updatedMessages(){
-        let lengthOfMessages = messageArray.length;
-        let lastMessage;
-        if(lengthOfMessages!=0){
-            lastMessage = messageArray[lengthOfMessages-1].id;
-        }
-        const token = localStorage.getItem('token')
-        newMessages = await axios.get(`http://localhost:3000/users/getmessage/${lastMessage}`, {headers: {"Authorization" : token}})
-        console.log(newMessages.data)
-        newMessages.data.forEach(element=>{
-            displayMessageOnScreen(element);
-        })
-        
-        updateLocalStorageMesseges(newMessages.data);
 
+
+function userClick(e){
+    if(e.target.className == "list-group-item"){
+        const name = e.target.textContent;
+        const id = +e.target.children[0].value;
+        toUserId:id;
+        const userMessage = `<h1 style="text-align:center; bottom:10px; background-color:#37df9149">${name} <input class="msg2" type='hidden' id='msg-header-user-id' value='${id}'/></h1>`;
+        messageHeader.innerHTML=userMessage;
+        chatMessage.innerHTML="";
+        getChats(id);
     }
-    async function getLocalStorageMessages(){
-        if(localStorage.message){
-            return await JSON.parse(localStorage.message);
-        }
+}
+async function  getChats(toUserId =0){
+    chatMessage.innerHTML="";
+    const token=localStorage.getItem('token')
+   const response= await axios.get(`http://localhost:3000/chat/allchats/${toUserId}`,{headers:{"Authorization":token}})
+//    console.log(response)
+   if(response.status ==200 && response.data.chats){
+    localStorage.removeItem('Id')
+    localStorage.setItem('Id', toUserId )
+      const chats=response.data.chats;
+      console.log('responsessss',chats)
+      chats.forEach((chat)=>{
+        console.log(chat)
+        const chatNodes=`<li class="list-group-item1"><strong style="color:white">${chat.user.name}</strong><br>${chat.chatMessage}</li>`
+        chatMessage.innerHTML +=chatNodes
+      })
+   }
+}
+async function chat(e){
+    e.preventDefault()
+    const id1 = +document.getElementById('msg-header-user-id').value;
+    const chat1=e.target.chat2.value;
+    if(!chat1){
+       return createToast('plzz enter the message')
     }
-
-    async function   updateLocalStorageMesseges(newMessages){
-        const lengthOfNewMessages = newMessages.length;
-        if (lengthOfNewMessages>10){
-            newMessages.splice(0,lengthOfNewMessages-10 );
-            newMessages.forEach((message)=>{
-                messageArray.push(message)
-            })
-        }
-        else{
-            messageArray.splice(0, lengthOfNewMessages );
-            newMessages.forEach((message)=>{
-                messageArray.push(message)
-            })
-        }
-        localStorage.message = JSON.stringify(messageArray)
-
+    try{
+    const chatDetails={
+       chat: chat1,
+       toUser:id1
     }
-    function displayMessageOnScreen(messages,right){
-    
-        const pn=document.querySelector('.container1')
-    
-        
-        const messageElement = document.createElement('div')
-        const cn=`<div id=${messages.id}> ${messages.Name} :- ${messages.message},  At ${messages.updatedAt} </div>`
-        messageElement.innerHTML = cn;
-        messageElement.classList.add('message')
-        messageElement.classList.add('right')
-        pn.append(messageElement)
-    
-        
-        
-    
+    console.log(chatDetails)
+    const token=localStorage.getItem('token')
+    await axios.post('http://localhost:3000/chat/chatmessage',chatDetails,{headers:{"Authorization":token}})
+    .then(response=>{
+        console.log(response)
+        if(response.status ===200){
+            createToast(response.data.message)
         }
+    })
+}catch(err){
+    console.log(err)
+    if(err.response.status===400){
+        createToast(err.response.data.message)
+    }
+    if(err.response.status===500){
+        createToast(err.response.data.message)
+    }
+}
+}
+function showScreen(){
+    allLoginUsers()
+   setInterval(() => {
+    getChats(localStorage.getItem('Id'))
+   }, 7000);
+    // getChats(localStorage.getItem('Id'))
+
+    }   
+
+window.addEventListener('DOMContentLoaded',showScreen)
+userLeft.addEventListener('click',userClick)
+
+document.getElementById('leave-btn').addEventListener('click', () => {
+  const leaveRoom = confirm('Are you sure you want to leave the chatroom?');
+  if (leaveRoom) {
+    window.location = './login.html';
+  } else {
+  }
+});
+

@@ -1,32 +1,35 @@
-function userLogin(event){
-    try{
-        event.preventDefault();
-    const Email = event.target.email.value;
-    const Password = event.target.password.value;
+function login(e){
+    e.preventDefault()
+    const loginDetails={
+        email:e.target.email.value,
+        password:e.target.password.value
 
-    const obj = { Email,Password};
-
-    axios.post('http://localhost:3000/users/Login',obj)
-    .then((response)=>{
-        
-        if(response.status === 207){
-            
-            document.body.innerHTML += `<h4  style="color:black; border: 3px solid white; width: 300px; margin:5px"><strong>Invalid Credetials : User Not Authorised!</strong> </h4>`;
-        }
-        if(response.status === 201){
-            localStorage.setItem('token', response.data.token)
-            alert("Login Successfull !")
-            window.location.href='http://localhost:3000/ChatWindow.html'
-        }
-        
-    }).catch(err => {
-        console.log(JSON.stringify(err))
-        document.body.innerHTML += `<h4  style="color:black; border: 3px solid white; width: 200px; margin:5px"><strong>Incorrect Password!</strong> </h4>`;
-    })
-
-    }catch(err){
-        throw new Error("Something Went Wrong!")
     }
-    
+    axios.post("http://localhost:3000/user/login",loginDetails)
+    .then(response=>{
+        console.log(response)
+        if(response.status==200){
+            alert(response.data.message)
+            localStorage.setItem('token',response.data.token)
+            window.location.href="./chat.html"
+        }else{
+            throw new Error(response.data.message)
+        }
+    })
+    .catch(err=>{
+        console.log(err)
+        console.log(err.response.data.message)
+        if(err.response.status ===400){
+        document.body.innerHTML += `<div style="color:red";>${err.response.data.message}</div>`
+        }
+        if(err.response.status ===401){
+            alert(err.response.data.message)
+        }
+        if(err.response.status ===404){
+            alert(err.response.data.message)
+        }
+        
 
+    })
+    
 }

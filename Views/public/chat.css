@@ -1,0 +1,169 @@
+*{
+    font-family:sans-serif
+}
+.container{
+    width: 100%;
+    background-color: #33322fe5;
+    height: 85%;
+    margin-top: 2%;
+    border-radius: 30px;
+}
+.container1{
+    width: 30%;
+    background-image: url('https://i.pinimg.com/736x/85/ec/df/85ecdf1c3611ecc9b7fa85282d9526e0.jpg');
+    background-size:cover;
+    height: 84%;
+    border: 0.5px solid #e1d7b1;
+    border-radius: 20px;
+    float: left;
+    overflow-y: auto;
+}
+.container1:hover{
+    
+		border:none;
+		border-radius:7px;
+		box-shadow:0 50px 50px 0 #1f212348, 0 50px 50px 0 #1f212348;
+}
+.container2{
+    width: 69.3%;
+    border: 0.5px solid #e1d7b1;
+    background-image: url('https://wallpaperaccess.com/full/4076929.png');
+    background-size:cover;
+    border-radius: 20px;
+  float: right;
+  height: 84%;
+  overflow: auto;
+}
+.list-group-item1{
+    background-color: #37df91c7;
+    width:24%;
+    padding:10px;
+    margin:17px 12px;
+    border:2px solid #e1d7b1;
+    border-radius: 10px;
+    color: black;
+}      
+.list-group-item{
+    clear:both;
+    background-color:#fbfafa69;
+    width: 150px;
+    height: 30px;
+    padding-left: 5px;
+    padding-top: 5px;
+    border:1px solid black;
+    color: black;
+    right: 2cm;
+    border-radius: 10px;
+    float: left;
+    cursor: pointer;
+    transition: 0.6s;
+    text-align: center;
+    
+}
+.list-group-item:hover{
+    background-color: #339966e5;
+}
+
+
+.right{
+    float:right;
+    clear:both;
+}
+body{
+    height:100vh;
+    background-color: #272726e5;
+}
+#send-container{
+   text-align: center; 
+   display: block;
+   max-width: 985px;
+   width:100%;
+   float: right;
+}
+#messageinp{
+    width:76%;
+    height:50px;
+    padding-left: 5px;
+    margin-left: 40px;
+    border: none;
+    border-radius: 20px;
+    background: #0a0a0a7a;
+    padding-left: 10px;
+
+    
+}
+
+.btn{
+    cursor:pointer;
+    height:34px;
+    color:rgb(13, 13, 13);
+    background: transparent;
+    border: none;
+    transition: 0.8s;
+    
+}
+.btn:hover{
+    color: #fff;
+}
+.btn2{
+    width: 90px;
+    text-align: center;
+    height: 10px;
+    color:rgb(13, 13, 13);
+    background:#9a38a39f; ;
+    border: none;
+    border-radius: 10px;
+    padding: 20px;
+    
+}
+.btn2:hover{
+    background:  #339966e5;
+}
+.btn3{
+    cursor:pointer;
+    height: 23px;
+    color:rgb(13, 13, 13);
+    background-color: #c7c0c7ce; border: 2px solid white; border-color: #615b5e;
+    color: black;
+}
+.btn3:hover{
+    background: #d1bd10;
+}
+
+ul li{
+    list-style-type: none;
+}
+#msg-header-user-id{
+    border-radius: 24%;
+}
+.chat-header {
+	background: #33322fe5;
+
+	color: #37df91;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	padding: 15px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.features{
+    max-width:400px;
+    max-height: 40px;
+    border: none;
+    background-color: #b8c794;
+    margin-left: 2px;
+    border-radius: 20px;
+    padding-left: 10px;
+    text-align: center;
+}
+.features:hover{
+    background: #37df91;
+}
+.card-header{
+    max-width:1000px;
+    max-height: 400px;
+    border: none;
+    background-color: #e1d7b1;
+    border-radius: 5px;
+}

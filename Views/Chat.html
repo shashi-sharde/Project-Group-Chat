@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="./public/chat.css">
+</head>
+<body>
+    <div class="container">
+        <header class="chat-header">
+            <h1><i class="fas fa-smile"></i> ChatApp</h1>
+            <h2>Private Chat</h2>
+            <a id="leave-btn" class="btn2">Logout</a>
+          </header>
+      
+    <div class="container1">
+        <div class="features">
+            <nav>
+            <button class="btn" id="one-to-one-chat"><b>Private Chat</b></button>
+            <button class="btn" id="group-chat"><b>Group Chat</b></button>
+            <button class="btn" id="create-group"><b>Group settings</b></button>
+        </nav>
+        <div >
+            <ul  id="left">
+
+
+            </ul>
+       
+        
+            <ul id="users-list">
+
+            </ul>
+        </div>
+    </div>
+    </div>
+    <div class="container2">
+        <div class="card-header" id="message-card-header">
+
+        </div>
+<ul id="chat-messages">
+
+</ul>
+<div id="toast-msg"></div>
+</div>
+
+
+<div class="send">
+<form id="send-container" onsubmit="chat(event)">
+     <input type="text" name="chat2" id="messageinp" placeholder="Enter Message">
+     <button class="btn3" type="submit" ><i>Send</i></button>
+     <label for="sendAttachment"><i style=" margin: bottom 25px;  height: 50px; background-color: #c7c0c7ce; border: 2px solid white; border-color: #615b5e;" class="material-icons btn btn-primary">Attach File</i></label>
+     <input id="sendAttachment" style="visibility:hidden;" type="file">
+     
+     <!-- <button for="sendAttachment"> <img src="https://cdn.iconscout.com/icon/premium/png-128-thumb/attachment-5156507-4302650.png" alt="buttonpng"></button> -->
+     
+</form>
+</div>
+    </div>
+  
+   
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js" integrity="sha512-QTnb9BQkG4fBYIt9JGvYmxPpd6TBeKp6lsUrtiVQsrJ9sb33Bn9s0wMQO9qVBFbPX3xHRAsBHvXlcsrnJjExjg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./js/Chat.js">
+        
+    </script>
+</body>
+</html>
