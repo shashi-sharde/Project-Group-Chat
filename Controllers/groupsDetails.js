@@ -3,6 +3,7 @@ const Group=require('../Models/groups');
 const User=require('../Models/User');
 const Usergroup = require('../Models/userGroup');
 const Groupchat=require('../Models/groupChat');
+const OLD_Groupmessage = require('../Models/oldGroupChat');
 
 
 exports.postCreateGroup=async(req,res)=>{
@@ -125,3 +126,11 @@ exports.allGroupMesssage=async(req,res)=>{
         res.status(500).json({message:err,success:false})
     }
 }
+exports.moveOldGroupMessages = async() =>{
+    const currentDate = new Date();
+    const oldGroupMessages = await Groupchat.findAll({
+      where: { date: { [Op.lt]: currentDate } }
+    });
+    await OLD_Groupmessage.bulkCreate(oldGroupMessages);
+    await Groupchat.destroy({ where: { date: { [Op.lt]: currentDate } } });
+  }

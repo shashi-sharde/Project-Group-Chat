@@ -4,6 +4,9 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const bcrypt = require('bcrypt')
 require('dotenv').config()
+const setupCronJobs = require('./Routes/cron');
+
+
 
 const sequelize = require('./util/database')
 
@@ -34,6 +37,7 @@ app.use(cors())
 app.use(userRoute)
 app.use(chatRouter)
 app.use(GroupRoute)
+setupCronJobs();
 
 
 

@@ -1,6 +1,7 @@
 const {Op} =require('sequelize');
 const User=require('../Models/User');
 const Chat=require('../Models/Chatting');
+const Old_Chat =require('../Models/oldPrivateChat')
 
 exports.getAllusers=async(req,res)=>{
     try{
@@ -111,3 +112,12 @@ exports.saveFile = async (req, res) => {
             res.status(500).json(null);
         }
     }
+
+    exports.moveOldPrivateMessages = async() =>{
+        const currentDate = new Date();
+        const oldMessages = await Chat.findAll({
+          where: { date: { [Op.lt]: currentDate } }
+        });
+        await Old_Chat.bulkCreate(oldMessages);
+        await Chat.destroy({ where: { date: { [Op.lt]: currentDate } } });
+      }
